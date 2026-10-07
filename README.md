@@ -139,7 +139,7 @@ As alterações realizadas através do Front-End são persistidas no banco de da
 - .NET SDK
 - Node.js
 - Angular CLI
-- Visual Studio ou outra IDE compatível
+- Visual Studio ou outra IDE compatível com .NET
 - DBeaver (opcional, para consultar o banco de dados)
 
 ### Executando o Back-End
@@ -150,13 +150,19 @@ Acesse a pasta da API:
 cd Backend/MinhaPrimeiraApi
 ```
 
-Execute o projeto:
+Antes de iniciar a API, configure o certificado HTTPS de desenvolvimento:
 
 ```bash
-dotnet run
+dotnet dev-certs https --trust
 ```
 
-Após iniciar a aplicação, a API estará disponível em:
+Execute a aplicação utilizando o perfil HTTPS:
+
+```bash
+dotnet run --launch-profile https
+```
+
+A API estará disponível em:
 
 ```text
 https://localhost:7096
@@ -167,6 +173,8 @@ O Swagger pode ser acessado em:
 ```text
 https://localhost:7096/swagger
 ```
+
+As migrations do Entity Framework Core são aplicadas automaticamente ao iniciar a API, preparando o banco de dados SQLite para utilização.
 
 ## Executando o Front-End
 
@@ -194,6 +202,9 @@ Após iniciar, acesse:
 http://localhost:4200
 ```
 
+Com o Back-End e o Front-End em execução, a aplicação estará pronta para realizar as operações de gerenciamento de produtos.
+
 ## 📌 Observações
 
-Para utilizar a aplicação, o Back-End deve estar em execução antes de realizar as operações no Front-End.
+O Back-End deve estar em execução antes de utilizar as operações do Front-End.
+O banco de dados SQLite é preparado automaticamente pela aplicação por meio das migrations do Entity Framework Core.
