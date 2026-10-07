@@ -132,4 +132,17 @@ export class App implements OnInit {
       }
     });
   }
+
+  removerProduto(id: number): void {
+    this.produtosService.removerProduto(id).subscribe({
+      next: () => {
+        this.produtos.update(produtos =>
+          produtos.filter(p => p.id !== id)
+        );
+      },
+      error: (erro) => {
+        console.error('Erro ao remover produto:', erro);
+      }
+    });
+  }
 }
