@@ -20,6 +20,20 @@
 </div>
 }
 
+<h2>Novo produto</h2>
+
+<input type="text"
+       [(ngModel)]="nomeNovoProduto"
+       placeholder="Nome do produto" />
+
+<input type="number"
+       [(ngModel)]="precoNovoProduto"
+       placeholder="Preço" />
+
+<button (click)="adicionarProduto()">Adicionar</button>
+
+<p>{{ mensagemCadastro }}</p>
+
 <div>
   @for (produto of produtos(); track produto.id) {
   <p>

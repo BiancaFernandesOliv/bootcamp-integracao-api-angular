@@ -18,6 +18,11 @@ export class App implements OnInit {
 
   mensagemBusca = '';
 
+  nomeNovoProduto = '';
+  precoNovoProduto: number | null = null;
+
+  mensagemCadastro = '';
+
   constructor(private produtosService: ProdutosService) { }
 
   ngOnInit(): void {
@@ -46,6 +51,31 @@ export class App implements OnInit {
         console.error('Erro ao buscar produto:', erro);
         this.produtoEncontrado.set(null);
         this.mensagemBusca = 'Produto não encontrado.';
+      }
+    });
+  }
+
+  adicionarProduto(): void {
+    if (!this.nomeNovoProduto || this.precoNovoProduto === null) {
+      return;
+    }
+
+    const novoProduto = {
+      nome: this.nomeNovoProduto,
+      preco: this.precoNovoProduto
+    };
+
+    this.produtosService.criarProduto(novoProduto).subscribe({
+      next: (produto) => {
+        this.produtos.update(produtos => [...produtos, produto]);
+
+        this.nomeNovoProduto = '';
+        this.precoNovoProduto = null;
+        this.mensagemCadastro = 'Produto adicionado com sucesso!';
+      },
+      error: (erro) => {
+        console.error('Erro ao adicionar produto:', erro);
+        this.mensagemCadastro = 'Erro ao adicionar produto.';
       }
     });
   }
