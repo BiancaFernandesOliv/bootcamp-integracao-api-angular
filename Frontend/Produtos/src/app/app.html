@@ -1,5 +1,25 @@
 <h1>Produtos</h1>
 
+<h2>Buscar produto por ID</h2>
+
+<input type="number"
+       [(ngModel)]="idBusca"
+       placeholder="Digite o ID" />
+
+<button (click)="buscarPorId()">Buscar</button>
+
+<p>{{ mensagemBusca }}</p>
+
+@if (produtoEncontrado(); as produto) {
+<div>
+  <h3>Produto encontrado</h3>
+
+  <p>ID: {{ produto.id }}</p>
+  <p>Nome: {{ produto.nome }}</p>
+  <p>Preço: R$ {{ produto.preco }}</p>
+</div>
+}
+
 <div>
   @for (produto of produtos(); track produto.id) {
   <p>
