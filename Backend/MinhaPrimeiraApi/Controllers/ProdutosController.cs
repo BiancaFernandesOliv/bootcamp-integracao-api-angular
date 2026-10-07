@@ -55,7 +55,7 @@ namespace MinhaPrimeiraApi.Controllers {
             }
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         public async Task<IActionResult> Atualizar(int id, [FromBody] Produto produtoAtualizado) {
 
             if (!ModelState.IsValid) {
@@ -68,7 +68,7 @@ namespace MinhaPrimeiraApi.Controllers {
                 return NotFound($"Produto com ID {id} não encontrado.");
             }
 
-            return Ok($"Produto '{produto.Nome}' atualizado com sucesso!");
+            return Ok(produto);
         }
 
         [HttpDelete("{id}")]

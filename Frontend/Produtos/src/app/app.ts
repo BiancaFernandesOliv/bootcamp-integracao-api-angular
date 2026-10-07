@@ -15,13 +15,16 @@ export class App implements OnInit {
 
   idBusca: number | null = null;
   produtoEncontrado = signal<Produto | null>(null);
-
   mensagemBusca = '';
 
   nomeNovoProduto = '';
   precoNovoProduto: number | null = null;
-
   mensagemCadastro = '';
+
+  idEdicao: number | null = null;
+  nomeEdicao = '';
+  precoEdicao: number | null = null;
+  mensagemEdicao = '';
 
   constructor(private produtosService: ProdutosService) { }
 
@@ -76,6 +79,56 @@ export class App implements OnInit {
       error: (erro) => {
         console.error('Erro ao adicionar produto:', erro);
         this.mensagemCadastro = 'Erro ao adicionar produto.';
+      }
+    });
+  }
+
+  editarProduto(produto: Produto): void {
+    this.idEdicao = produto.id;
+    this.nomeEdicao = produto.nome;
+    this.precoEdicao = produto.preco;
+  }
+
+  salvarEdicao(): void {
+    if (
+      this.idEdicao === null ||
+      !this.nomeEdicao ||
+      this.precoEdicao === null
+    ) {
+      return;
+    }
+
+    const produtoAtualizado = {
+      nome: this.nomeEdicao,
+      preco: this.precoEdicao
+    };
+
+    this.produtosService.atualizarProduto(
+      this.idEdicao,
+      produtoAtualizado
+    ).subscribe({
+      next: () => {
+        this.produtos.update(produtos =>
+          produtos.map(p =>
+            p.id === this.idEdicao
+              ? {
+                ...p,
+                nome: this.nomeEdicao,
+                preco: this.precoEdicao!
+              }
+              : p
+          )
+        );
+
+        this.mensagemEdicao = 'Produto atualizado com sucesso!';
+
+        this.idEdicao = null;
+        this.nomeEdicao = '';
+        this.precoEdicao = null;
+      },
+      error: (erro) => {
+        console.error('Erro ao atualizar produto:', erro);
+        this.mensagemEdicao = 'Erro ao atualizar produto.';
       }
     });
   }

@@ -23,8 +23,10 @@ export class ProdutosService {
     return this.http.post<Produto>(this.apiUrl, produto);
   }
 
-  atualizarProduto(id: number, produto: { nome: string, preco: number }): Observable<Produto> {
-    return this.http.put<Produto>(`${this.apiUrl}/${id}`, produto);
+  atualizarProduto(id: number, produto: { nome: string; preco: number }): Observable<string> {
+    return this.http.put(`${this.apiUrl}/${id}`, produto, {
+      responseType: 'text'
+    });
   }
 
   removerProduto(id: number): Observable<void> {

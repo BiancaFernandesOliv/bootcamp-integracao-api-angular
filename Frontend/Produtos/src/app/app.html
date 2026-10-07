@@ -34,10 +34,22 @@
 
 <p>{{ mensagemCadastro }}</p>
 
+@for (produto of produtos(); track produto.id) {
 <div>
-  @for (produto of produtos(); track produto.id) {
-  <p>
+  @if (idEdicao === produto.id) {
+  <input type="text"
+         [(ngModel)]="nomeEdicao" />
+
+  <input type="number"
+         [(ngModel)]="precoEdicao" />
+
+  <button (click)="salvarEdicao()">Salvar</button>
+  } @else {
+  <span>
     {{ produto.id }} - {{ produto.nome }} - R$ {{ produto.preco }}
-  </p>
+  </span>
+
+  <button (click)="editarProduto(produto)">Editar</button>
   }
 </div>
+}
