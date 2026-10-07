@@ -1,0 +1,645 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+/* =========================
+   BASE
+   ========================= */
+
+:host {
+  display: block;
+  min-height: 100vh;
+  background: #f8f7fa;
+  color: #222222;
+  font-family: 'Poppins', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+/* =========================
+   TOPO
+   ========================= */
+
+.topbar {
+  width: calc(100% - 32px);
+  height: 64px;
+  margin: 14px auto 0;
+  background: #512da8;
+  display: flex;
+  align-items: center;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(81, 45, 168, 0.25);
+}
+
+.topbar-inner {
+  width: 1100px;
+  max-width: calc(100% - 40px);
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+  .topbar-inner span {
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+/* =========================
+   PÁGINA
+   ========================= */
+
+.pagina {
+  width: 1100px;
+  max-width: calc(100% - 40px);
+  margin: 0 auto;
+  padding: 42px 0 70px;
+}
+
+/* =========================
+   CABEÇALHO
+   ========================= */
+
+.cabecalho {
+  margin-bottom: 30px;
+}
+
+  /* Título principal */
+  .cabecalho h1 {
+    margin: 0 0 8px;
+    font-size: 32px;
+    font-weight: 700;
+    color: #222222;
+  }
+
+  /* Subtítulo */
+  .cabecalho p {
+    margin: 0;
+    font-size: 15px;
+    color: #666666;
+  }
+
+/* =========================
+   PAINÉIS
+   ========================= */
+
+.paineis {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+/* =========================
+   CARDS
+   ========================= */
+
+.card {
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 14px;
+  padding: 26px 30px;
+  min-height: 140px;
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.06);
+}
+
+  /* Títulos dos cards */
+  .card h2 {
+    margin: 0 0 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #222222;
+    text-align: center;
+  }
+
+.titulo-form {
+  width: 100%;
+  margin: 0 0 20px;
+  line-height: 20px;
+  text-align: center;
+}
+
+/* =========================
+   FORMULÁRIOS
+   ========================= */
+
+.form-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+  .form-row input {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .form-row .btn {
+    width: 120px;
+    min-width: 120px;
+    height: 40px;
+    flex: 0 0 120px;
+    white-space: nowrap;
+  }
+
+input {
+  height: 40px;
+  padding: 0 13px;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #222222;
+  font-size: 13px;
+  outline: none;
+  transition: 0.2s ease;
+}
+
+  input::placeholder {
+    color: #999999;
+  }
+
+  input:focus {
+    border-color: #512da8;
+    box-shadow: 0 0 0 3px rgba(81, 45, 168, 0.1);
+  }
+
+/* =========================
+   BOTÕES
+   ========================= */
+
+.btn {
+  height: 40px;
+  min-width: 120px;
+  padding: 0 19px;
+  border: none;
+  border-radius: 8px;
+  background: #512da8;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+  .btn:hover {
+    background: #4527a0;
+  }
+
+  .btn:active {
+    transform: translateY(1px);
+  }
+
+.btn-pequeno {
+  height: 34px;
+  min-width: auto;
+  padding: 0 13px;
+  font-size: 12px;
+}
+
+.btn-contorno {
+  background: #ffffff;
+  border: 1px solid #d8d8d8;
+  color: #512da8;
+}
+
+/* =========================
+   BOTÕES DE AÇÃO
+   ========================= */
+
+.acoes {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+  .acoes .btn-contorno {
+    height: 34px;
+    padding: 0 13px;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+  }
+
+  /* Editar */
+
+  .acoes .btn-editar {
+    background: #ffffff;
+    border: 1px solid #cfc5e8;
+    color: #512da8;
+  }
+
+    .acoes .btn-editar:hover {
+      background: #f3efff;
+      border-color: #512da8;
+    }
+
+  /* Remover */
+
+  .acoes .btn-remover {
+    background: #e91e63;
+    border: 1px solid #e91e63;
+    color: #ffffff;
+  }
+
+    .acoes .btn-remover:hover {
+      background: #c2185b;
+      border-color: #c2185b;
+    }
+
+/* =========================
+   MENSAGENS
+   ========================= */
+
+.mensagem {
+  display: block;
+  margin: 14px 0 0;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+  .mensagem:empty {
+    display: none;
+  }
+
+/* Sucesso */
+
+.mensagem-sucesso {
+  background: #f3efff;
+  border: 1px solid #ddd2f5;
+  color: #512da8;
+}
+
+/* Erro */
+
+.mensagem-erro {
+  background: #fff1f5;
+  border: 1px solid #f6c5d5;
+  color: #c2185b;
+}
+
+/* =========================
+   PRODUTO ENCONTRADO
+   ========================= */
+
+.resultado {
+  margin-top: 18px;
+  padding: 16px 18px;
+  background: #faf7ff;
+  border: 1px solid #ddd2f5;
+  border-left: 4px solid #512da8;
+  border-radius: 9px;
+}
+
+  .resultado strong {
+    display: block;
+    margin-bottom: 6px;
+    color: #512da8;
+  }
+
+  .resultado span {
+    font-size: 13px;
+    color: #555555;
+  }
+
+/* =========================
+   TABELA - CARD
+   ========================= */
+
+.tabela-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.tabela-topo {
+  position: relative;
+  min-height: 68px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+  /* Título da tabela */
+  .tabela-topo h2 {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #222222;
+    text-align: center;
+  }
+
+.contador {
+  position: absolute;
+  right: 24px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: #f0ebff;
+  color: #512da8;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* =========================
+   TABELA
+   ========================= */
+
+.tabela-scroll {
+  overflow-x: auto;
+}
+
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 14px;
+}
+
+  .tabela th {
+    height: 46px;
+    padding: 0 22px;
+    background: #fafafa;
+    color: #777777;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    text-align: left;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  .tabela td {
+    height: 70px;
+    padding: 12px 22px;
+    border-bottom: 1px solid #eeeeee;
+    color: #444444;
+  }
+
+  .tabela tbody tr {
+    transition: background 0.2s ease;
+  }
+
+    .tabela tbody tr:hover {
+      background: #fcfaff;
+    }
+
+    .tabela tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+  /* =========================
+   COLUNAS
+   ========================= */
+
+  /* ID */
+
+  .tabela th:nth-child(1),
+  .tabela td:nth-child(1) {
+    width: 10%;
+  }
+
+  /* Nome */
+
+  .tabela th:nth-child(2),
+  .tabela td:nth-child(2) {
+    width: 15%;
+  }
+
+  /* Preço */
+
+  .tabela th:nth-child(3),
+  .tabela td:nth-child(3) {
+    width: 50%;
+    text-align: center;
+  }
+
+  /* Ações */
+
+  .tabela th:nth-child(4),
+  .tabela td:nth-child(4) {
+    width: 25%;
+  }
+
+  .tabela th:nth-child(4) {
+    text-align: right;
+    padding-right: 97px;
+  }
+
+  .tabela td:nth-child(4) {
+    text-align: right;
+  }
+
+/* =========================
+   CONTEÚDO DAS COLUNAS
+   ========================= */
+
+.col-id {
+  color: #777777 !important;
+}
+
+.tabela .nome {
+  font-weight: 600;
+  color: #222222;
+}
+
+.tabela .preco {
+  color: #512da8;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* =========================
+   AÇÕES DA TABELA
+   ========================= */
+
+.tabela td:last-child .acoes {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+/* =========================
+   EDIÇÃO
+   ========================= */
+
+.tabela td input {
+  width: 100%;
+  height: 36px;
+}
+
+/* =========================
+   LISTA VAZIA
+   ========================= */
+
+.vazio {
+  padding: 35px !important;
+  text-align: center;
+  color: #999999;
+}
+
+/* =========================
+   RESPONSIVIDADE
+   ========================= */
+
+@media (max-width: 800px) {
+
+  .topbar {
+    width: calc(100% - 20px);
+  }
+
+  .topbar-inner {
+    max-width: calc(100% - 28px);
+  }
+
+  .pagina {
+    max-width: calc(100% - 28px);
+    padding-top: 30px;
+  }
+
+  .cabecalho h1 {
+    font-size: 26px;
+  }
+
+  .paineis {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    flex-wrap: wrap;
+  }
+
+    .form-row input {
+      min-width: 120px;
+    }
+
+  .tabela {
+    min-width: 700px;
+  }
+}
+
+/* =========================
+   MODAL DE CONFIRMAÇÃO
+   ========================= */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(34, 34, 34, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-confirmacao {
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  animation: aparecerModal 0.18s ease-out;
+}
+
+.modal-icone {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: #fff1f4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.modal-confirmacao h2 {
+  margin: 0 0 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #222222;
+}
+
+.modal-confirmacao p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #666666;
+}
+
+.modal-confirmacao strong {
+  color: #222222;
+}
+
+.modal-acoes {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.btn-modal-cancelar,
+.btn-modal-remover {
+  height: 40px;
+  padding: 0 18px;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.btn-modal-cancelar {
+  background: #ffffff;
+  border: 1px solid #d8d8d8;
+  color: #555555;
+}
+
+  .btn-modal-cancelar:hover {
+    background: #f7f7f7;
+    border-color: #bdbdbd;
+  }
+
+.btn-modal-remover {
+  background: #e91e63;
+  border: 1px solid #e91e63;
+  color: #ffffff;
+}
+
+  .btn-modal-remover:hover {
+    background: #c2185b;
+    border-color: #c2185b;
+  }
+
+@keyframes aparecerModal {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

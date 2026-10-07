@@ -1,56 +1,240 @@
-<h1>Produtos</h1>
+<header class="topbar">
+  <div class="topbar-inner">
+    <span class="marca">📦 Gestão de Produtos</span>
+  </div>
+</header>
 
-<h2>Buscar produto por ID</h2>
+<main class="pagina">
 
-<input type="number"
-       [(ngModel)]="idBusca"
-       placeholder="Digite o ID" />
+  <div class="cabecalho">
+    <h1>Produtos</h1>
+    <p>Consulte, cadastre e gerencie os produtos da API.</p>
+  </div>
 
-<button (click)="buscarPorId()">Buscar</button>
+  <div class="paineis">
 
-<p>{{ mensagemBusca }}</p>
+    <!-- Buscar produto -->
+    <section class="card">
+      <h2 class="titulo-form">Buscar por ID</h2>
 
-@if (produtoEncontrado(); as produto) {
-<div>
-  <h3>Produto encontrado</h3>
+      <div class="form-row">
+        <input type="number"
+               [(ngModel)]="idBusca"
+               placeholder="Digite o ID" />
 
-  <p>ID: {{ produto.id }}</p>
-  <p>Nome: {{ produto.nome }}</p>
-  <p>Preço: R$ {{ produto.preco }}</p>
-</div>
-}
+        <button class="btn"
+                (click)="buscarPorId()">
+          🔍 Buscar
+        </button>
+      </div>
 
-<h2>Novo produto</h2>
+      @if (mensagemBusca) {
+      <p class="mensagem mensagem-erro">
+        {{ mensagemBusca }}
+      </p>
+      }
 
-<input type="text"
-       [(ngModel)]="nomeNovoProduto"
-       placeholder="Nome do produto" />
+      @if (produtoEncontrado(); as produto) {
+      <div class="resultado">
 
-<input type="number"
-       [(ngModel)]="precoNovoProduto"
-       placeholder="Preço" />
+        <strong>
+          #{{ produto.id }} · {{ produto.nome }}
+        </strong>
 
-<button (click)="adicionarProduto()">Adicionar</button>
+        <span>
+          {{ formatarPreco(produto.preco) }}
+        </span>
 
-<p>{{ mensagemCadastro }}</p>
+      </div>
+      }
 
-@for (produto of produtos(); track produto.id) {
-<div>
-  @if (idEdicao === produto.id) {
-  <input type="text"
-         [(ngModel)]="nomeEdicao" />
+    </section>
 
-  <input type="number"
-         [(ngModel)]="precoEdicao" />
 
-  <button (click)="salvarEdicao()">Salvar</button>
-  } @else {
-  <span>
-    {{ produto.id }} - {{ produto.nome }} - R$ {{ produto.preco }}
-  </span>
+    <!-- Novo produto -->
+    <section class="card">
+      <h2 class="titulo-form">Novo produto</h2>
 
-  <button (click)="editarProduto(produto)">Editar</button>
-  <button (click)="removerProduto(produto.id)">Remover</button>
+      <div class="form-row">
+
+        <input type="text"
+               [(ngModel)]="nomeNovoProduto"
+               placeholder="Nome do produto" />
+
+        <input type="number"
+               [(ngModel)]="precoNovoProduto"
+               placeholder="Preço" />
+
+        <button class="btn"
+                (click)="adicionarProduto()">
+          ＋ Adicionar
+        </button>
+
+      </div>
+
+      @if (mensagemCadastro) {
+      <p class="mensagem mensagem-sucesso">
+        {{ mensagemCadastro }}
+      </p>
+      }
+
+    </section>
+
+  </div>
+
+
+  <!-- Lista de produtos -->
+  <section class="card tabela-card">
+
+    <div class="tabela-topo">
+      <h2>Lista de produtos</h2>
+
+      <span class="contador">
+        {{ produtos().length }} itens
+      </span>
+    </div>
+
+
+    <div class="tabela-scroll">
+
+      <table class="tabela">
+
+        <colgroup>
+          <col class="col-id-tabela">
+          <col class="col-nome-tabela">
+          <col class="col-preco-tabela">
+          <col class="col-acoes-tabela">
+        </colgroup>
+
+        <thead>
+          <tr>
+            <th class="col-id">ID</th>
+            <th>Nome</th>
+            <th class="direita">Preço</th>
+            <th class="direita">Ações</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          @for (produto of produtos(); track produto.id) {
+
+          <tr>
+
+            <td class="col-id">
+              #{{ produto.id }}
+            </td>
+
+            @if (idEdicao === produto.id) {
+
+            <td>
+              <input type="text"
+                     [(ngModel)]="nomeEdicao" />
+            </td>
+
+            <td>
+              <input type="number"
+                     [(ngModel)]="precoEdicao" />
+            </td>
+
+            <td>
+              <div class="acoes">
+
+                <button class="btn btn-pequeno"
+                        (click)="salvarEdicao()">
+                  Salvar
+                </button>
+
+              </div>
+            </td>
+
+            } @else {
+
+            <td class="nome">
+              {{ produto.nome }}
+            </td>
+
+            <td class="direita preco">
+              {{ formatarPreco(produto.preco) }}
+            </td>
+
+            <td>
+              <div class="acoes">
+
+                <button class="btn-contorno btn-editar"
+                        (click)="editarProduto(produto)"
+                        title="Editar produto">
+                  ✏️ Editar
+                </button>
+
+                <button class="btn-contorno btn-remover"
+                        (click)="removerProduto(produto)"
+                        title="Remover produto">
+                  🗑️ Remover
+                </button>
+
+              </div>
+            </td>
+
+            }
+
+          </tr>
+
+          } @empty {
+
+          <tr>
+            <td colspan="4" class="vazio">
+              Nenhum produto cadastrado.
+            </td>
+          </tr>
+
+          }
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </section>
+
+
+  <!-- Modal de confirmação de remoção -->
+  @if (produtoParaRemover(); as produto) {
+
+  <div class="modal-overlay">
+
+    <div class="modal-confirmacao">
+
+      <div class="modal-icone">
+        🗑️
+      </div>
+
+      <h2>Remover produto?</h2>
+
+      <p>
+        Tem certeza que deseja remover
+        <strong>{{ produto.nome }}</strong>?
+      </p>
+
+      <div class="modal-acoes">
+
+        <button class="btn-modal-cancelar"
+                (click)="cancelarRemocao()">
+          Cancelar
+        </button>
+
+        <button class="btn-modal-remover"
+                (click)="confirmarRemocao()">
+          🗑 Remover
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
   }
-</div>
-}
+
+</main>
